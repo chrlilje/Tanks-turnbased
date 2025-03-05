@@ -209,7 +209,7 @@ function launchGrenade(tank) {
   grenade.vy = sin(tank.angle) * (tank.power / 4); // reduce the power by half
   grenades.push(grenade);
   setTimeout(() => {
- // grenade.armed = true;
+  grenade.armed = true;
   }
     , 500);
 }
@@ -285,7 +285,7 @@ class Grenade {
       this.y += this.vy;
 
       // Check for direct hit on tanks
-      if (this.checkHit(player1) || this.checkHit(player2)) {
+      if (this.armed && (this.checkHit(player1) || this.checkHit(player2))) {
         this.explode();
       }
 
